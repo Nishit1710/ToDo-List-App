@@ -13,15 +13,10 @@ export default function Page() {
           <h1 className="mt-6 text-center text-3xl font-extrabold text-gray-900">Welcome, {user.displayName}</h1>
         
           <p className="mt-2 text-center text-sm text-gray-600">Your email is {user.email}</p>
-          <Link href="/src/shoping-list" className="text-indigo-600 hover:text-indigo-500"> 
-              Visit Your Shopping List
-          </Link>
           <Link href="/src/Pages" className="text-indigo-600 hover:text-indigo-500"> 
               Visit Your To Do List
           </Link>
-          <Link href="/src/Pages/ViewTask" className="text-indigo-600 hover:text-indigo-500"> 
-              Visit Your To Do List
-          </Link>
+          
           <button onClick={firebaseSignOut} className="text-indigo-600 hover:text-indigo-500">Sign Out</button>
         </div>
       ) : (
