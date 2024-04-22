@@ -19,6 +19,9 @@ export default function Page() {
           <Link href="/src/Pages" className="text-indigo-600 hover:text-indigo-500"> 
               Visit Your To Do List
           </Link>
+          <Link href="/src/Pages/ViewTask" className="text-indigo-600 hover:text-indigo-500"> 
+              Visit Your To Do List
+          </Link>
           <button onClick={firebaseSignOut} className="text-indigo-600 hover:text-indigo-500">Sign Out</button>
         </div>
       ) : (
