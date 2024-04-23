@@ -4,11 +4,11 @@ import { useUserAuth } from "../_utils/auth-context";
 import { getTasks, deleteTask, editTask } from "../_services/task-list-service";
 import Link from "next/link";
 
-const viewTasks = () => {
-  const { user, gitHubSignIn, firebaseSignOut } = useUserAuth();
+const ViewTasks = () => {
+  const { user } = useUserAuth();
   const [tasks, setTasks] = useState([]);
   const [isEditing, setIsEditing] = useState(false);
-  const [currentTask, setCurrentTask] = useState(null);
+  const [currentTask, setCurrentTask] = useState(null);
 
   useEffect(() => {
     if (user) {
@@ -25,15 +25,16 @@ const viewTasks = () => {
       // Handle error if needed
     }
   }
+
   async function handleDelete(taskId) {
     try {
-        await deleteTask(user.uid ,taskId);
-        loadTasks(); // Refresh the tasks list after deletion
+      await deleteTask(user.uid, taskId);
+      loadTasks(); // Refresh the tasks list after deletion
     } catch (error) {
-        console.error(error);
+      console.error(error);
     }
   }
-  
+
   async function handleEdit(taskId, taskData) {
     try {
       await editTask(user.uid, taskId, taskData);
@@ -95,7 +96,8 @@ const viewTasks = () => {
               <button className="mr-2 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" type="submit">Save</button>
               <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" type="button" onClick={() => setIsEditing(false)}>Cancel</button>
             </div>
-          </form>        ) : (
+          </form>
+        ) : (
           <div className="flex flex-wrap justify-between max-w-6xl mx-auto">
             {tasks.map(task => (
               <div key={task.id} className="w-64 p-4 border bg-violet-300 rounded-md m-2">
@@ -118,4 +120,4 @@ const viewTasks = () => {
   );
 };
 
-export default viewTasks;
+export default ViewTasks;
