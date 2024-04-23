@@ -40,7 +40,7 @@ export default function Page() {
             await addTask(user.uid, newTaskWithId);
             setTasks(prevTasks => [...prevTasks, newTaskWithId]); // Add the new task to the state
             const newItemIndex = tasks.length; // Index of the newly added task
-            const newItem = document.querySelector(`.grid.grid-cols-4 > div:nth-child(${newItemIndex + 1})`); // Select the newly added task element
+            const newItem = document.querySelector(`.grid.grid-cols-4 > div:nth-child(${newItemIndex + 1})`); // Fix the querySelector syntax
             newItem.classList.add("bg-gray-800", "rounded-md", "p-4", "text-white", "text-center", "mb-4"); // Add the CSS classes to the newly added task element
             newItem.style.borderRadius = '10px';
             newItem.style.padding = '10px';
@@ -51,33 +51,19 @@ export default function Page() {
             // Handle error if needed
         }
     }
-
-    return (
-        user ? (
-            <main>
-                <h1 className='text-4xl font-bold text-center m-4'>Todo List</h1>
-                <div className='flex flex-row'>
-                    <ul>
-                        <NewTaskForm onAddTask={handleAddTask} className="" />
-                    </ul>
-                </div> 
-                <div>
-                    <h2>Tasks:</h2>
-                    <div className="grid grid-cols-4 gap-4 p-4 rounded-md" style={{ backgroundColor: 'hsl(0, 0%, 4%)' }}>
-                        {tasks.map(task => (
-                            <div key={task.id} className="bg-gray-800 rounded-md p-4 text-white text-center mb-4">
-                                <ul>
-                                    <li className="font-bold">Name: {task.name}</li>
-                                    <li className="text-blue-900">Description: {task.description}</li>
-                                    <li>Category: {task.category}</li>
-                                </ul>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </main>
-        ) : (
-            <p>Sign in to view your todo list.</p>
-        )
-    )
-}
+    
+    return (<div style={{ backgroundImage: "url('https://imageio.forbes.com/specials-images/dam/imageserve/1092571024/960x0.jpg?height=474&width=711&fit=bounds')", backgroundSize: 'cover', minHeight: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+    
+      <main>
+        <h1 className='text-4xl font-bold text-black text-center m-4'>To-do List</h1>
+        <div className='flex'>
+          <ul>
+            <NewTaskForm onAddTask={handleAddTask} className="" />
+          </ul>
+        </div>
+        </main>
+    </div>
+  
+      );
+      
+    };

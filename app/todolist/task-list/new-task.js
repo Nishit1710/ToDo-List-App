@@ -46,19 +46,26 @@ export default function NewTaskForm({onAddTask}) {
     };
     
     return (
-        <main className="flex m-4">
+        <main className="flex justify-center m-4 text-black align-center">
             <div>
-                <form onSubmit={handleSubmit}>
-                <div className="mb-4 text-black">
+                <form onSubmit={handleSubmit} className="bg-gray-400 p-6 rounded-md w-full max-w-96. ">
+                <div className="m-2 text-black rounded-md bg-gray-100">
                         <input required onChange={handleNameChange} value={name} type="text" placeholder="Task Name"
-                            className="mt-1 p-2 w-full rounded-md bg-gray-100"
+                            className="w-full border border-gray-300 p-5  rounded-md"
                         />
-                    </div>
-                    <div className="flex justify-between text-black">
-                        <input required onChange={handleDescriptionChange} value={description} type="text" placeholder="Description"
-                            className="mt-1 p-2 block w-full rounded-md bg-gray-100"
-                        />
-                    <select value={category} onChange={handleCategory} className="ml-1 border-2 border-gray-100 p-2 rounded-md">
+                    </div> 
+                    <div className="m-2 text-black rounded-md bg-gray-100">
+                        <textarea
+                    name="description"
+                    value= {description}
+                    onChange={handleDescriptionChange}
+                    className="w-full border border-gray-300 p-14 rounded-md"
+                    placeholder="Task Description"
+                    />
+
+                     </div>
+                    <div>
+                    <select value={category} onChange={handleCategory} className="mt-1 p-2 w-full rounded-md bg-gray-100">
                         <option value="Personal">Personal</option>
                         <option value="fitness">Fitness</option>
                         <option value="work">Work</option>

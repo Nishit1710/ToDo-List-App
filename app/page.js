@@ -1,11 +1,13 @@
-import Link from 'next/link'
+import Link from 'next/link';
 
 export default function Page() {
   return (
-    <main className=' flex flex-col items-center justify-center text-center min-h-screen '>
-      <h1 className=' text-center width-half rounded-md mb-4 text-blue-300 text-4x1 font-bold'>CPRG-306: Web-Dev Final Assignment</h1>
-      <div className ='flex-col max-w-sm p-2'>
-        <p className='font-bold font-bold rounded-full px-24 py-1 m-1 hover:bg-teal-200 hover:text-black'><Link href="todolist">View Our To-Do List</Link></p>
+    <main className="flex flex-col items-center justify-center min-h-screen bg-cover" style={{backgroundImage: "url('https://cdn.vectorstock.com/i/1000v/13/40/todo-list-seamless-pattern-universal-background-vector-7561340.jpg')"}}>
+      <h1 className="text-4xl font-bold text-black mb-8">Manage your tasks with your Todo List</h1>
+      <div className="flex flex-col max-w-sm p-2">
+        <p className="font-bold rounded-full px-8 py-3 m-2 bg-blue-500 hover:bg-blue-700 text-white transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-110">
+          <Link href="/todolist">View Your To-Do List</Link>
+        </p>
       </div>
     </main>
   );
