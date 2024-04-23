@@ -48,9 +48,9 @@ const viewTasks = () => {
     <div className="h-screen flex justify-center items-center bg-cover bg-center" style={{backgroundImage: "url('https://images.pexels.com/photos/4238511/pexels-photo-4238511.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940')"}}>
       <div className="text-center">
         <h1 className="font-bold text-4xl mb-4 text-black">Tasks to complete</h1>
-        <Link href="/task-list/new-tasks" className="mb-4 inline-block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+        <Link href="../todolist/task-list" className="mb-4 inline-block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
           Add New Task
-        </Link>
+        </Link>
 
     {isEditing ? (
       <form onSubmit={(e) => {
