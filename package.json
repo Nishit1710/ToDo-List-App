@@ -1,5 +1,5 @@
 {
-  "name": "cprg306-finalproject",
+  "name": "cprg306-assignments",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -10,18 +10,17 @@
   },
   "dependencies": {
     "encoding": "^0.1.13",
-    "firebase": "^10.11.0",
-    "mdb-react-ui-kit": "^8.0.0",
-    "next": "14.1.4",
+    "firebase": "^10.9.0",
+    "next": "14.0.4",
     "react": "^18",
     "react-dom": "^18",
     "react-icons": "^5.1.0",
-    "react-router-dom": "^6.22.3"
+    "uuid": "^9.0.1"
   },
   "devDependencies": {
     "autoprefixer": "^10.0.1",
     "eslint": "^8",
-    "eslint-config-next": "14.1.4",
+    "eslint-config-next": "14.0.4",
     "postcss": "^8",
     "tailwindcss": "^3.3.0"
   }

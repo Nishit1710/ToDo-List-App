@@ -1,13 +1,12 @@
+import Link from 'next/link'
+
 export default function Page() {
-    return(
-      <main className="container mx-auto p-4 min-h-screen flex flex-col items-center justify-center text-black" style={{ backgroundColor: '#FDF5E6'}}>
-        <div className="grid grid-cols-1 items-start text-center mt-20">
-          <h1 className="text-4xl font-extrabold mb-3" style={{ backgroundColor: '#ADD8E6' }}> CPRG-306- Final Project</h1>
-          
-          <li className="text-black hover:text-purple-400 hover:underline mb-3" style={{ backgroundColor: '#ADD8E6', borderRadius: '10px', padding: '10px', boxShadow: '0 50px 50px 0 rgba(0, 0, 0, 0.2)' }}>
-            <a href="/src">Visit Our Assignment</a>
-          </li>
-        </div>
-      </main>
-    );
-  };
+  return (
+    <main className=' flex flex-col items-center justify-center text-center min-h-screen '>
+      <h1 className=' text-center width-half rounded-md mb-4 text-blue-300 text-4x1 font-bold'>CPRG-306: Web Development 2 - Assignment</h1>
+      <div className ='flex-col max-w-sm p-2'>
+        <p className='font-bold font-bold rounded-full px-24 py-1 m-1 hover:bg-teal-200 hover:text-black'><Link href="todolist">Welcome To TODOLIST</Link></p>
+      </div>
+    </main>
+  );
+};
