@@ -65,7 +65,7 @@ export default function NewTaskForm({onAddTask}) {
                             className="mt-1 p-2 block w-full rounded-md bg-gray-100"
                         />
                     <select value={category} onChange={handleCategory} className="ml-1 border-2 border-gray-100 p-2 rounded-md">
-                        <option value disabled>Home</option>
+
                         <option value="Personal">Personal</option>
                         <option value="fitness">Fitness</option>
                         <option value="work">Work</option>

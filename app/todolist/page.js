@@ -36,14 +36,14 @@ const Page = () => {
     <div className="relative h-screen flex justify-center items-center bg-cover bg-center" style={{backgroundImage: "url('https://images.pexels.com/photos/2736499/pexels-photo-2736499.jpeg?cs%3Dsrgb%26dl%3Dpexels-content-pixie-2736499.jpg%26fm%3Djpg')"}}>
     {user ? (
         <div className="text-center">
-          <h1 className="font-bold text-4xl mb-4">Welcome {user?.displayName}</h1>
-          <p className="text-lg mb-2">Let's create your Todo Lists</p>
+          <h1 className="absolute top-3 left-3 font-bold text-6xl mb-4 h-64">Welcome {user?.displayName}</h1>
+          <h2 className="font-bold font-style: italic text-2xl mb-10">Set your goal, crush them and repeat.</h2>
           <button onClick={firebaseSignOut} className="absolute top-4 right-4 border-2 p-1 bg-blue-500 text-white rounded-md hover:bg-blue-600">
             Logout
           </button>
-          <div className="flex mt-4">
+          <div className="flex flex-col mt-10">
             <Link href="../todolist/task-list">
-              <span className="inline-block bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-full cursor-pointer mr-4">
+              <span className="inline-block bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-full cursor-pointer mb-4">
                 Add Tasks
               </span>
             </Link>
