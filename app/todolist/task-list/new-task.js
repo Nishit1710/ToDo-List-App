@@ -1,5 +1,5 @@
 "use client"
-
+import Link from  'next/link';
 import { v4 as uuidv4 } from 'uuid';
 import { useState } from "react";
 import { getTask,addTask } from '../_services/task-list-service';
@@ -78,6 +78,7 @@ export default function NewTaskForm({onAddTask}) {
                         Add Task 
                     </button>
                 </form>
+                <Link href="../todolist/view-tasks" className="justify-center m-4 ml-20 items-centermb-4 inline-block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"> view task</Link>
             </div>
         </main>
     )
