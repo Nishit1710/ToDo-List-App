@@ -8,7 +8,6 @@ export default function NewTaskForm({onAddTask}) {
     const [description, setDescription] = useState("")
     const [category, setCategory]  = useState("") 
 
-
     const handleNameChange = (event) => {
             setName(event.target.value)
     };
@@ -16,6 +15,7 @@ export default function NewTaskForm({onAddTask}) {
     const handleDescriptionChange =(event) =>
         {setDescription(event.target.value)
     };
+    
     const handleCategory =(event) =>
         {setCategory(event.target.value)
     };
@@ -32,16 +32,12 @@ export default function NewTaskForm({onAddTask}) {
     
         try {
             // Call the addTask function to add the new task to Firestore
-            
-    
             // Call the onAddTask function passed as a prop to notify the parent component
             onAddTask(newTask);
-    
             // Reset form fields
             setName("");
             setDescription("");
             setCategory(""); // Set default category or choose an appropriate default value
-
             await addTask(user.uid, newTask);
         } catch (error) {
             console.error('Error adding task:', error);
@@ -49,8 +45,6 @@ export default function NewTaskForm({onAddTask}) {
         }
     };
     
-    
-
     return (
         <main className="flex m-4">
             <div>
@@ -65,26 +59,23 @@ export default function NewTaskForm({onAddTask}) {
                             className="mt-1 p-2 block w-full rounded-md bg-gray-100"
                         />
                     <select value={category} onChange={handleCategory} className="ml-1 border-2 border-gray-100 p-2 rounded-md">
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
                         <option value="Personal">Personal</option>
                         <option value="fitness">Fitness</option>
                         <option value="work">Work</option>
                         <option value="study">Study</option>
                         <option value="other">Other</option>
-                        
                     </select>
                     </div >
                     <button className="mt-4 w-full py-2 px-4 bg-sky-600 hover:bg-sky-500 rounded-md text-white"
                         type="submit">
-                        Add
+                        Add Task 
                     </button>
-
                 </form>
             </div>
-            
         </main>
-
     )
-
- 
 }
