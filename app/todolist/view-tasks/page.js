@@ -1,12 +1,14 @@
 "use client";
 import { useState, useEffect } from "react";
 import { useUserAuth } from "../_utils/auth-context";
-import { getTasks, deleteTask } from "../_services/task-list-service";
+import { getTasks, deleteTask, editTask } from "../_services/task-list-service";
 import Link from "next/link";
 
 const viewTasks = () => {
   const { user, gitHubSignIn, firebaseSignOut } = useUserAuth();
   const [tasks, setTasks] = useState([]);
+  const [isEditing, setIsEditing] = useState(false);
+  const [currentTask, setCurrentTask] = useState(null);
 
   useEffect(() => {
     if (user) {
@@ -23,27 +25,69 @@ const viewTasks = () => {
       // Handle error if needed
     }
   }
+  async function handleDelete(taskId) {
+    try {
+        await deleteTask(user.uid ,taskId);
+        loadTasks(); // Refresh the tasks list after deletion
+    } catch (error) {
+        console.error(error);
+    }
+  }
+  
+  async function handleEdit(taskId, taskData) {
+    try {
+      await editTask(user.uid, taskId, taskData);
+      loadTasks(); // Refresh the tasks list after editing
+      setIsEditing(false); // Hide the form after editing
+    } catch (error) {
+      console.error(error);
+    }
+  }
 
   return (
     <div className="h-screen flex justify-center items-center bg-cover bg-center" style={{backgroundImage: "url('https://images.pexels.com/photos/4238511/pexels-photo-4238511.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940')"}}>
       <div className="text-center">
         <h1 className="font-bold text-4xl mb-4 text-black">Tasks to complete</h1>
-        <div className="flex flex-wrap justify-center">
-          {tasks.map((task) => (
-            <div key={task.id} className="box-border w-64 p-4 bg-gray-200 rounded-md m-4 shadow-md">
-              <ul>
-                <li className="font-bold">Name: {task.name}</li>
-                <li>Description: {task.description}</li>
-                <li>Category: {task.category}</li>
-              </ul>
-              <button onClick={() => deleteTask(user.uid, task.id)} className="border-2 m-2 p-1 bg-red-500 text-white rounded-md hover:bg-red-600">
-                Delete
-              </button>
+        <Link href="/task-list/new-tasks" className="mb-4 inline-block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+          Add New Task
+        </Link>
+
+    {isEditing ? (
+      <form onSubmit={(e) => {
+        e.preventDefault();
+        const newTaskName = e.target.elements.name.value;
+        const newTaskDescription = e.target.elements.description.value;
+        const newTaskCategory = e.target.elements.category.value;
+        handleEdit(currentTask.id, { name: newTaskName, description: newTaskDescription, category: newTaskCategory });
+      }}>
+        <ul><li><input name="name" defaultValue={currentTask.name} /></li>
+        <li><input name="description" defaultValue={currentTask.description} /></li>
+        <li><select name="category" defaultValue={currentTask.category} className="ml-1 border-2 border-gray-100 p-2 rounded-md">
+          <option value="Personal">Personal</option>
+          <option value="Fitness">Fitness</option>
+          <option value="Work">Work</option>
+          <option value="Study">Study</option>
+          <option value="Other">Other</option>
+        </select></li></ul>
+        <button type="submit">Save</button>
+        <button type="button" onClick={() => setIsEditing(false)}>Cancel</button>
+      </form>
+    ) : (
+      tasks.map(task => (
+        <div key={task.id}>
+          <p>{task.name}</p>
+          <p>{task.description}</p>
+          <p>{task.category}</p>
+              <button onClick={() => {
+                setCurrentTask(task);
+                setIsEditing(true);
+              }}>Edit</button>
+              <button onClick={() => handleDelete(task.id)}>Delete</button>
             </div>
-          ))}
-        </div>
-      </div>
-    </div>
+          ))
+        )}
+        </div></div>
+
   );
 };
 
