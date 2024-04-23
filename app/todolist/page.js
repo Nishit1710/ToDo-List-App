@@ -36,8 +36,8 @@ const Page = () => {
     <div className="relative h-screen flex justify-center items-center bg-cover bg-center" style={{backgroundImage: "url('https://images.pexels.com/photos/2736499/pexels-photo-2736499.jpeg?cs%3Dsrgb%26dl%3Dpexels-content-pixie-2736499.jpg%26fm%3Djpg')"}}>
     {user ? (
         <div className="text-center">
-          <h1 className="absolute top-3 left-3 font-bold text-6xl mb-4 h-64">Welcome {user?.displayName}</h1>
-          <h2 className="font-bold font-style: italic text-2xl mb-10">Set your goal, crush them and repeat.</h2>
+          <h1 style={{whiteSpace: 'nowrap'}} className="absolute top-12 left-4 w-16 font-bold text-5xl mb-4 text-black">Welcome {user?.displayName}</h1>
+          <h2 style={{whiteSpace: 'nowrap'}} className="absolute top-24 left-4 w-16 font-style: italic font-bold text-2xl mb-10 text-black">Set your goal, crush them and repeat.</h2>          
           <button onClick={firebaseSignOut} className="absolute top-4 right-4 border-2 p-1 bg-blue-500 text-white rounded-md hover:bg-blue-600">
             Logout
           </button>

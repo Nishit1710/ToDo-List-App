@@ -49,9 +49,9 @@ export default function NewTaskForm({onAddTask}) {
         <main className="flex m-4">
             <div>
                 <form onSubmit={handleSubmit}>
-                    <div className="block mb-4 text-black">
+                <div className="mb-4 text-black">
                         <input required onChange={handleNameChange} value={name} type="text" placeholder="Task Name"
-                            className="mt-1 p-2 block w-full rounded-md bg-gray-100"
+                            className="mt-1 p-2 w-full rounded-md bg-gray-100"
                         />
                     </div>
                     <div className="flex justify-between text-black">
@@ -59,10 +59,6 @@ export default function NewTaskForm({onAddTask}) {
                             className="mt-1 p-2 block w-full rounded-md bg-gray-100"
                         />
                     <select value={category} onChange={handleCategory} className="ml-1 border-2 border-gray-100 p-2 rounded-md">
-<<<<<<< Updated upstream
-
-=======
->>>>>>> Stashed changes
                         <option value="Personal">Personal</option>
                         <option value="fitness">Fitness</option>
                         <option value="work">Work</option>
